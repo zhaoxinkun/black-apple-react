@@ -4,7 +4,7 @@ import styles from "./product.module.css" //使用模块化样式
 import styled from "styled-components"; //使用css-in-js方案
 
 
-const StyledProductContainer = styled.div < StylePropsType > `
+const StyledProductContainer = styled.div`
     max-width: 28rem;
     position: relative;
     transition: transform ${(props) => props.$transition || "0.1s"} ease-in-out;
@@ -21,7 +21,7 @@ export default function Product(props) {
     console.log(props)
 
     const {product} = props;
-    product.title = "hah"
+    // product.title = "hah" 不可修改
 
     // 使用内部样式--图片样式
     const imgStyle = {
