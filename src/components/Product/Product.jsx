@@ -1,16 +1,10 @@
-import {JSX} from "react";
 import ipadPro from "~img/store-card-ipad-pro.jpeg"
 import "./index.css" //使用外部样式
 import styles from "./product.module.css" //使用模块化样式
 import styled from "styled-components"; //使用css-in-js方案
 
 
-interface StylePropsType {
-    $transition?: string,
-    $scale?: number
-}
-
-const StyledProductContainer = styled.div<StylePropsType>`
+const StyledProductContainer = styled.div < StylePropsType > `
     max-width: 28rem;
     position: relative;
     transition: transform ${(props) => props.$transition || "0.1s"} ease-in-out;
@@ -21,22 +15,13 @@ const StyledProductContainer = styled.div<StylePropsType>`
     }
 `
 
-interface ProductType {
-    title: string,
-    detail: string,
-    img: string,
-    textColor: string,
-}
 
-interface ProductProps {
-    product: ProductType
-}
-
-export default function Product(props: ProductProps): JSX.Element {
+export default function Product(props) {
 
     console.log(props)
 
     const {product} = props;
+    product.title = "hah"
 
     // 使用内部样式--图片样式
     const imgStyle = {

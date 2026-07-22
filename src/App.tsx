@@ -1,4 +1,4 @@
-import Product from "@components/Product/Product";
+import Product from "./components/Product/Product.jsx";
 import {product} from "@/assets/data"
 
 export default function App() {
