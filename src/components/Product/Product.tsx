@@ -1,22 +1,42 @@
+import {JSX} from "react";
 import ipadPro from "~img/store-card-ipad-pro.jpeg"
 import "./index.css" //使用外部样式
 import styles from "./product.module.css" //使用模块化样式
 import styled from "styled-components"; //使用css-in-js方案
 
 
-const StyledProductContainer = styled.div`
+interface StylePropsType {
+    $transition?: string,
+    $scale?: number
+}
+
+const StyledProductContainer = styled.div<StylePropsType>`
     max-width: 28rem;
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    transition: transform ${(props) => props.$transition || "0.1s"} ease-in-out;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(${(props) => props.$scale || 1});
         cursor: pointer;
     }
 `
 
+interface ProductType {
+    title: string,
+    detail: string,
+    img: string,
+    textColor: string,
+}
 
-export default function Product() {
+interface ProductProps {
+    product: ProductType
+}
+
+export default function Product(props: ProductProps): JSX.Element {
+
+    console.log(props)
+
+    const {product} = props;
 
     // 使用内部样式--图片样式
     const imgStyle = {
@@ -34,11 +54,11 @@ export default function Product() {
             {/*        <div className={"product-detail"}>磅礴的薄 RMB 9999 起</div>*/}
             {/*    </div>*/}
             {/*</div>*/}
-            <StyledProductContainer>
+            <StyledProductContainer $scale={1.05} $transition={"0.5s"}>
                 <img src={ipadPro} alt="iPad Pro" style={imgStyle}/>
                 <div className={styles.productTextContainer}>
-                    <div className={styles["product-title"]}>iPad Pro</div>
-                    <div className={"product-detail"}>磅礴的薄 RMB 9999 起</div>
+                    <div className={styles["product-title"]}>{product.title}</div>
+                    <div className={"product-detail"}>{product.detail}</div>
                 </div>
             </StyledProductContainer>
 
