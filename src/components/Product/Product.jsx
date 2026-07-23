@@ -1,9 +1,8 @@
-import ipadPro from "~img/store-card-ipad-pro.jpeg"
 import "./index.css" //使用外部样式
 import styles from "./product.module.css" //使用模块化样式
 import styled from "styled-components"; //使用css-in-js方案
 
-
+// 整个盒子的组件
 const StyledProductContainer = styled.div`
     max-width: 28rem;
     position: relative;
@@ -15,12 +14,21 @@ const StyledProductContainer = styled.div`
     }
 `
 
+// 内部的文字的组件
+const StyledProductTextContainer = styled.div`
+    position: absolute;
+    top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 2rem;
+    color: ${(props) => props.$textColor || "#000"};
+    font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+`
+
 
 export default function Product(props) {
+    console.log("🚀 ~ Product ~ props: ", props);
 
-    console.log(props)
-
-    const {product} = props;
+    const {product, OnProductOnclick} = props;
     // product.title = "hah" 不可修改
 
     // 使用内部样式--图片样式
@@ -31,7 +39,7 @@ export default function Product(props) {
     }
     return (
         <>
-            {/*外部容器*/}
+            {/*外部容器 使用模块化样式*/}
             {/*<div style={{maxWidth: "28rem", position: "relative"}}>*/}
             {/*    <img src={ipadPro} alt="iPad Pro" style={imgStyle}/>*/}
             {/*    <div className={styles.productTextContainer}>*/}
@@ -39,12 +47,14 @@ export default function Product(props) {
             {/*        <div className={"product-detail"}>磅礴的薄 RMB 9999 起</div>*/}
             {/*    </div>*/}
             {/*</div>*/}
-            <StyledProductContainer $scale={1.05} $transition={"0.5s"}>
-                <img src={ipadPro} alt="iPad Pro" style={imgStyle}/>
-                <div className={styles.productTextContainer}>
+
+            {/*使用style component方式*/}
+            <StyledProductContainer $scale={1.05} $transition={"0.5s"} onClick={() => OnProductOnclick("haha")}>
+                <img src={product.image} alt="iPad Pro" style={imgStyle} title={"hah"}/>
+                <StyledProductTextContainer $textColor={product.textColor}>
                     <div className={styles["product-title"]}>{product.title}</div>
                     <div className={"product-detail"}>{product.detail}</div>
-                </div>
+                </StyledProductTextContainer>
             </StyledProductContainer>
 
         </>
