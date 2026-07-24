@@ -1,3 +1,4 @@
+import DarkToggle from "@components/DarkToggle.jsx";
 import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import {IoSearchOutline} from "react-icons/io5";
@@ -50,6 +51,7 @@ export default function Header() {
             }
             <div className="gap-2 space-x-2 dark:text-white">
                 <button onClick={() => setIsSearchEnable(!isSearchEnable)}><IoSearchOutline size={24}/></button>
+                <DarkToggle/>
                 <button className="md:hidden" onClick={() => setIsOpen(true)}><AiOutlineMenu size={24}/></button>
             </div>
 
