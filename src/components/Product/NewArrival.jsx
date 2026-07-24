@@ -1,3 +1,5 @@
+// 新品发布组件
+
 import "./index.css" //使用外部样式
 import styles from "./product.module.css" //使用模块化样式
 import styled from "styled-components"; //使用css-in-js方案
@@ -25,10 +27,10 @@ const StyledProductTextContainer = styled.div`
 `
 
 
-export default function Product(props) {
-    console.log("🚀 ~ Product ~ props: ", props);
+export default function NewArrival(props) {
 
-    const {product, OnProductOnclick} = props;
+    const {product, scale, OnProductOnclick} = props;
+    console.log("🚀 ~ NewArrival ~ product: ", product);
     // product.title = "hah" 不可修改
 
     // 使用内部样式--图片样式
@@ -49,7 +51,7 @@ export default function Product(props) {
             {/*</div>*/}
 
             {/*使用style component方式*/}
-            <StyledProductContainer $scale={1.05} $transition={"0.5s"} onClick={() => OnProductOnclick("haha")}>
+            <StyledProductContainer $scale={scale} $transition={"0.5s"} onClick={() => OnProductOnclick("haha")}>
                 <img src={product.image} alt="iPad Pro" style={imgStyle} title={"hah"}/>
                 <StyledProductTextContainer $textColor={product.textColor}>
                     <div className={styles["product-title"]}>{product.title}</div>
