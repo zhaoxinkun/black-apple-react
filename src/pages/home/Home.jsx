@@ -1,6 +1,7 @@
 import {NEW_ARRIVALS_LIST, OFFER_LIST} from "@/assets/data/index.js";
 import withBanner from "@/Hocs/withBanner.jsx";
 import withSoldOut from "@/Hocs/withSoldOut.jsx";
+import ImageHero from "@components/ImageHero.jsx";
 import Offer from "@components/Offer/Offer.jsx";
 import NewArrival from "@components/Product/NewArrival.jsx";
 import ProductList from "@components/Product/ProductList.jsx";
@@ -20,6 +21,10 @@ const NewArrivalWithBannerSoldOutCheck = withBanner(NewArrivalWithSoldOutCheck, 
 export default function Home() {
     return (
         <>
+            {/*头部大图*/}
+            <ImageHero/>
+
+            {/*产品列表*/}
             <ProductList
                 title={"上新品, 各个添新意"}
                 dataLength={NEW_ARRIVALS_LIST.length}>
