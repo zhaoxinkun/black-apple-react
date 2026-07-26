@@ -75,6 +75,9 @@ importers:
       stylelint-config-standard:
         specifier: ^40.0.0
         version: 40.0.0(stylelint@17.14.1(typescript@6.0.3))
+      stylelint-config-tailwindcss:
+        specifier: ^1.0.1
+        version: 1.0.1(stylelint@17.14.1(typescript@6.0.3))(tailwindcss@4.3.3)
       typescript-eslint:
         specifier: ^8.65.0
         version: 8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)
@@ -1854,6 +1857,12 @@ packages:
     peerDependencies:
       stylelint: ^17.0.0
 
+  stylelint-config-tailwindcss@1.0.1:
+    resolution: {integrity: sha512-IeIMivgaB1kxPBgllMzBqyv0g61IwFxxZKo/fDDelfZ/JtPPlSBT04VuOCslk6PIaq5GQvdRnHOP1K3HpxSkeg==}
+    peerDependencies:
+      stylelint: '>=13.13.1'
+      tailwindcss: '>=2.2.16'
+
   stylelint@17.14.1:
     resolution: {integrity: sha512-xVQwyiuxALUBNB2fBe0tmNemg9KqLtdj3T64mioFDar79B2cU8LIyz+3KL6LdiHs9NkeNfwxpKSaIVOY8f112g==}
     engines: {node: '>=20.19.0'}
@@ -3612,6 +3621,11 @@ snapshots:
     dependencies:
       stylelint: 17.14.1(typescript@6.0.3)
       stylelint-config-recommended: 18.0.0(stylelint@17.14.1(typescript@6.0.3))
+
+  stylelint-config-tailwindcss@1.0.1(stylelint@17.14.1(typescript@6.0.3))(tailwindcss@4.3.3):
+    dependencies:
+      stylelint: 17.14.1(typescript@6.0.3)
+      tailwindcss: 4.3.3
 
   stylelint@17.14.1(typescript@6.0.3):
     dependencies:

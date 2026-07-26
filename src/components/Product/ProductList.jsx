@@ -18,7 +18,7 @@ const ListTitle = ({title}) => (
         <h1
             style={{
                 fontWeight: "800",
-                fontSize: "32",
+                fontSize: 32,
                 backgroundImage: "url('src/assets/lines.png')",
                 backgroundPosition: "center",
             }}
