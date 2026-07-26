@@ -2,10 +2,10 @@
 // 如果没有传入这些 props，它会使用默认的标题、内容和页脚。
 export default function MainLayout({header, content, footer}) {
     return (
-        <>
+        <div className="bg-gray-100 dark:bg-white-800">
             {header ?? <h1>默认标题</h1>}
             {content ?? <h1>默认内容</h1>}
             {footer ?? <h1>默认页脚</h1>}
-        </>
+        </div>
     )
 }

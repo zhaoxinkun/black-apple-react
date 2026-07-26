@@ -18,9 +18,11 @@ const ListTitle = ({title}) => (
         <h1
             style={{
                 fontWeight: "800",
+                fontSize: "32",
                 backgroundImage: "url('src/assets/lines.png')",
                 backgroundPosition: "center",
             }}
+            className="dark:text-white"
         >
             {title || "新品上市"}
         </h1>
@@ -44,7 +46,8 @@ export default function ProductList({title, dataLength, children}) {
             <div style={{
                 display: "grid",
                 justifyItems: "center",
-                rowGap: "3rem"
+                rowGap: "3rem",
+                marginTop: "4rem",
             }}>
                 <ListTitle title={title}/>
                 {/*单个组件使用*/}
@@ -60,8 +63,6 @@ export default function ProductList({title, dataLength, children}) {
 
 
                 {/*插槽*/}
-
-
                 {
                     children
                 }
