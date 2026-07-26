@@ -1,9 +1,10 @@
-import {NEW_ARRIVALS_LIST, OFFER_LIST} from "@/assets/data/index.js";
+import {NEW_ARRIVALS_LIST, OFFER_LIST, SUGGESTED_PROUDCT} from "@/assets/data/index.js";
 import withBanner from "@/Hocs/withBanner.jsx";
 import withSoldOut from "@/Hocs/withSoldOut.jsx";
 import ImageHero from "@components/ImageHero.jsx";
 import Offer from "@components/Offer/Offer.jsx";
 import NewArrival from "@components/Product/NewArrival.jsx";
+import ProductHero from "@components/Product/ProductHero.jsx";
 import ProductList from "@components/Product/ProductList.jsx";
 
 // 使用HOC扩展组件
@@ -23,6 +24,12 @@ export default function Home() {
         <>
             {/*头部大图*/}
             <ImageHero/>
+
+            {/*产品推荐*/}
+            <ProductHero
+                product={SUGGESTED_PROUDCT.product}
+                imageUrl={SUGGESTED_PROUDCT.imageSrc}
+            />
 
             {/*产品列表*/}
             <ProductList
