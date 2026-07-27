@@ -1,10 +1,11 @@
+import {enableMapSet} from "immer"
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App.js";
 import "./index.css"
 
-const root = document.getElementById("root");
-
+const root = document.getElementById("root")!;
+enableMapSet()
 
 ReactDOM.createRoot(root).render(
     <React.StrictMode>

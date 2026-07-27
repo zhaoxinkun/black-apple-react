@@ -9,7 +9,7 @@ import svgr from "vite-plugin-svgr";
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const createAlias = (dirname) => path.resolve(__dirname, `src/${dirname}`)
+const createAlias = (dirname: string) => path.resolve(__dirname, `src/${dirname}`)
 
 
 // https://vite.dev/config/
@@ -17,7 +17,7 @@ export default defineConfig({
     plugins: [
         react({
             jsxRuntime: 'automatic',
-            fastRefresh: true,
+            // fastRefresh: true,
         }),
         babel({presets: [reactCompilerPreset()]}),
         tailwindcss(),

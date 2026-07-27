@@ -2,13 +2,13 @@ import {NEW_ARRIVALS_LIST, OFFER_LIST, SUGGESTED_PROUDCT} from "@/assets/data/in
 import withBanner from "@/Hocs/withBanner.jsx";
 import withSoldOut from "@/Hocs/withSoldOut.jsx";
 import ImageHero from "@components/ImageHero.jsx";
-import Offer from "@components/Offer/Offer.jsx";
-import NewArrival from "@components/Product/NewArrival.jsx";
-import ProductHero from "@components/Product/ProductHero.jsx";
-import ProductList from "@components/Product/ProductList.jsx";
+import Offer from "@components/Offer/Offer.js";
+import NewArrival, {type NewArrivalProps} from "@components/Product/NewArrival.js";
+import ProductHero from "@components/Product/ProductHero.js";
+import ProductList from "@components/Product/ProductList.tsx";
 
 // 使用HOC扩展组件
-const NewArrivalWithSoldOutCheck = withSoldOut((props) => {
+const NewArrivalWithSoldOutCheck = withSoldOut((props: NewArrivalProps) => {
     const {title} = props
     return <NewArrival {...props} title={title}/>
 })
@@ -18,6 +18,8 @@ const OfferWithSoldOutCheck = withSoldOut(Offer)
 
 // HOC套娃
 const NewArrivalWithBannerSoldOutCheck = withBanner(NewArrivalWithSoldOutCheck, "手慢无")
+
+const NewOfferWithBannerSoldOutCheck = withBanner(OfferWithSoldOutCheck, "已售罄")
 
 export default function Home() {
     return (
@@ -38,7 +40,7 @@ export default function Home() {
                 {/*插槽内容*/}
                 {
                     NEW_ARRIVALS_LIST.map((item) => (
-                        <NewArrivalWithBannerSoldOutCheck key={item.title} {...item} scale={1.05}/>
+                        <NewArrivalWithBannerSoldOutCheck soldOut={undefined} key={item.title} {...item} scale={1.05}/>
                     ))
                 }
             </ProductList>
@@ -48,7 +50,7 @@ export default function Home() {
                 dataLength={OFFER_LIST.length}>
                 {
                     OFFER_LIST.map((item) => (
-                        <OfferWithSoldOutCheck key={item.title} {...item} scale={1.05}/>
+                        <NewOfferWithBannerSoldOutCheck key={item.title} {...item} scale={1.05}/>
                     ))
                 }
             </ProductList>

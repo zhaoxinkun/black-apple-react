@@ -2,7 +2,7 @@ import DarkToggle from "@components/DarkToggle.jsx";
 import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import {IoSearchOutline} from "react-icons/io5";
-import Logo_image from "../assets/apple.svg?react"
+import Logo_image from "../../assets/apple.svg?react"
 
 export default function Header() {
 

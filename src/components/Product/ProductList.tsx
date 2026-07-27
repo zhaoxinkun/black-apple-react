@@ -1,4 +1,5 @@
 // 通用的一个组件
+import type {ReactNode} from "react";
 
 const ReleaseNote = () => (
     <div>
@@ -13,7 +14,7 @@ const ProductNotFound = () => (
         <h2>请耐心等待</h2>
     </div>
 );
-const ListTitle = ({title}) => (
+const ListTitle = ({title}: { title: string }) => (
     <div style={{display: "flex", justifyContent: "center"}}>
         <h1
             style={{
@@ -29,7 +30,13 @@ const ListTitle = ({title}) => (
     </div>
 );
 
-export default function ProductList({title, dataLength, children}) {
+type ProductListProps = {
+    title: string;
+    dataLength: number;
+    children: ReactNode;
+}
+
+export default function ProductList({title, dataLength, children}: ProductListProps) {
 
     const isReleased = new Date() <= new Date("2199-07-08")
 
@@ -37,7 +44,7 @@ export default function ProductList({title, dataLength, children}) {
     if (!isReleased) {
         return <ReleaseNote/>
     }
-    if (dataLength.length <= 0) {
+    if (dataLength <= 0) {
         return <ProductNotFound/>
     }
 
