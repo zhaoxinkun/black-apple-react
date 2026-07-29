@@ -1,17 +1,17 @@
-import {enableMapSet} from "immer"
+import { enableMapSet } from "immer";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.js";
-import "./index.css"
-import {BrowserRouter} from "react-router"
+import "./index.css";
+import { BrowserRouter } from "react-router";
 
 const root = document.getElementById("root")!;
-enableMapSet()
+enableMapSet();
 
 ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </React.StrictMode>
+  <React.StrictMode>
+    {/*<BrowserRouter>*/}
+    <App/>
+    {/*</BrowserRouter>*/}
+  </React.StrictMode>,
 );
