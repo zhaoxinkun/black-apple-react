@@ -5,13 +5,14 @@ import {
   Entertainment,
   Support,
   Phones,
-  SmartHome, SignIn, Register,
-} from "../pages";
+  SmartHome, SignIn, Register, NotFound, ErrorPage, SearchResults,
+} from "@/pages";
 import Home from "@/pages/Home.js";
-import Footer from "@components/Main/Footer.js";
-import Header from "@components/Main/Header.js";
+import Footer from "@components/Layout/Footer.js";
+import Header from "@components/Layout/Header.js";
 import BlankLayout from "@/layouts/BlankLayout.tsx";
 import MainLayout from "@/layouts/MainLayout.js";
+import ProductDetail from "@components/Product/ProductDetail.tsx";
 
 const routes = [{
   path: "/",
@@ -21,13 +22,24 @@ const routes = [{
       index: true, // 默认子路由
       element: <Home/>,
     },
-    { path: "about", element: <About/> },
-    { path: "computers", element: <Computers/> },
-    { path: "ipad", element: <IPad/> },
-    { path: "entertainment", element: <Entertainment/> },
-    { path: "support", element: <Support/> },
-    { path: "smarthome", element: <SmartHome/> },
-    { path: "phones", element: <Phones/> },
+    { path: "about", element: <About/>, errorElement: <ErrorPage/> },
+    { path: "computer", element: <Computers/>, errorElement: <ErrorPage/> },
+    { path: "ipad", element: <IPad/>, errorElement: <ErrorPage/> },
+    { path: "entertainment", element: <Entertainment/>, errorElement: <ErrorPage/> },
+    { path: "support", element: <Support/>, errorElement: <ErrorPage/> },
+    { path: "smarthome", element: <SmartHome/>, errorElement: <ErrorPage/> },
+    { path: "phone", element: <Phones/>, errorElement: <ErrorPage/> },
+    {
+      path: "product-detail/:id", // product-detail/123
+      element: <ProductDetail/>,
+      errorElement: <ErrorPage/>,
+    },
+    {
+      path: "search",
+      element: <SearchResults/>,
+      errorElement: <ErrorPage/>,
+    },
+    { path: "*", element: <NotFound/>, errorElement: <ErrorPage/> },
   ],
 },
   // 用户权限目录“/auth”
