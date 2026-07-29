@@ -1,12 +1,18 @@
-export default function withBanner(WrappedComponent, text) {
-    return ({soldOut, ...props}) => {
+import type {ComponentType} from "react";
+import type {SoldOutProps} from "./withSoldOut";
+
+export default function withBanner<P extends object>(
+    WrappedComponent: ComponentType<P & SoldOutProps>,
+    text: string,
+) {
+    return ({soldOut, ...props}: P & SoldOutProps) => {
         if (!soldOut) {
-            return <WrappedComponent {...props} soldOut={soldOut}/>;
+            return <WrappedComponent {...props as P} soldOut={soldOut}/>;
         }
 
         return (
             <div style={{position: "relative", display: "inline-block"}}>
-                <WrappedComponent {...props} soldOut={soldOut}/>
+                <WrappedComponent {...props as P} soldOut={soldOut}/>
                 <div
                     style={{
                         position: "absolute",

@@ -1,4 +1,4 @@
-import DarkToggle from "@components/DarkToggle.jsx";
+import DarkToggle from "@components/DarkToggle.js";
 import {useState} from "react";
 import {AiOutlineMenu} from "react-icons/ai";
 import {IoSearchOutline} from "react-icons/io5";

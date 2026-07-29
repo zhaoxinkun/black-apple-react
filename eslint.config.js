@@ -6,27 +6,28 @@ import functional from "eslint-plugin-functional";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
-  {
-    files: ["**/*.{js,jsx,ts,tsx}"],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    plugins: {
-      functional,
+    {ignores: ["dist"]},
+    {
+        files: ["**/*.{js,jsx,ts,tsx}"],
+        extends: [
+            js.configs.recommended,
+            ...tseslint.configs.recommended,
+            reactHooks.configs.flat.recommended,
+            reactRefresh.configs.vite,
+            tseslint.configs.recommendedTypeChecked
+        ],
+        plugins: {
+            functional,
+        },
+        languageOptions: {
+            globals: globals.browser,
+            parserOptions: {
+                ecmaFeatures: {jsx: true}, projectService: true
+            },
+        },
+        rules: {
+            "no-param-reassign": ["error", {props: true}],
+            "functional/immutable-data": "error",
+        },
     },
-    languageOptions: {
-      globals: globals.browser,
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-      },
-    },
-    rules: {
-      "no-param-reassign": ["error", { props: true }],
-      "functional/immutable-data": "error",
-    },
-  },
 );

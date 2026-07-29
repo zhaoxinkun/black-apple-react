@@ -1,15 +1,13 @@
 import type {CartItem, Product} from "#types/custom";
 import SkuSelect from "@components/SkuSelect.js";
 import {useState} from "react";
-import {produce} from "immer"
 
+type ProductCartItem = Omit<CartItem, "id">;
 
-const updateItem = (updates: Partial<CartItem>) => {
-    return produce((draft) => {
-        Object.assign(draft, updates)
-    })
-
-}
+const updateItem = (updates: Partial<ProductCartItem>) => (current: ProductCartItem): ProductCartItem => ({
+    ...current,
+    ...updates,
+});
 
 interface ProductHeroProps {
     product: Product;
@@ -18,7 +16,7 @@ interface ProductHeroProps {
 
 export default function ProductHero({product, imageUrl}: ProductHeroProps) {
 
-    const [cartItem, setCartItem] = useState<CartItem>({
+    const [cartItem, setCartItem] = useState<ProductCartItem>({
         productId: product.id,
         name: product.name,
         imageSrc: product.image,
@@ -31,6 +29,7 @@ export default function ProductHero({product, imageUrl}: ProductHeroProps) {
         memorySizePrice: null,
         qty: 1,
     });
+
 
     return (
         <div
@@ -76,15 +75,11 @@ export default function ProductHero({product, imageUrl}: ProductHeroProps) {
                         options={product.colors}
                         value={cartItem.color}
                         onChange={(value: string) => {
-                            const selectedMemorySize = product.memorySizes.find(
-                                (size) => size.name === value
-                            );
-                            if (selectedMemorySize)
+                            const selectedColor = product.colors.find((color) => color === value);
+                            if (selectedColor)
                                 setCartItem(
                                     updateItem({
-                                        memorySize: selectedMemorySize.name,
-                                        memorySizeId: selectedMemorySize.id,
-                                        memorySizePrice: selectedMemorySize.price,
+                                        color: selectedColor,
                                     })
                                 );
                         }}

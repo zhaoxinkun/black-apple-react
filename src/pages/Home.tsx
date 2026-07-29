@@ -1,11 +1,15 @@
-import {NEW_ARRIVALS_LIST, OFFER_LIST, SUGGESTED_PROUDCT} from "@/assets/data/index.js";
-import withBanner from "@/Hocs/withBanner.jsx";
-import withSoldOut from "@/Hocs/withSoldOut.jsx";
-import ImageHero from "@components/ImageHero.jsx";
+import {NEW_ARRIVALS_LIST, OFFER_LIST, SUGGESTED_PROUDCT} from "@/assets/data";
+import withBanner from "@/Hocs/withBanner";
+import withSoldOut from "@/Hocs/withSoldOut";
+import ImageHero from "@components/ImageHero.js";
 import Offer from "@components/Offer/Offer.js";
 import NewArrival, {type NewArrivalProps} from "@components/Product/NewArrival.js";
 import ProductHero from "@components/Product/ProductHero.js";
 import ProductList from "@components/Product/ProductList.tsx";
+
+const handleProductClick = (title: string) => {
+    console.log("Product clicked", title);
+};
 
 // 使用HOC扩展组件
 const NewArrivalWithSoldOutCheck = withSoldOut((props: NewArrivalProps) => {
@@ -40,7 +44,12 @@ export default function Home() {
                 {/*插槽内容*/}
                 {
                     NEW_ARRIVALS_LIST.map((item) => (
-                        <NewArrivalWithBannerSoldOutCheck soldOut={undefined} key={item.title} {...item} scale={1.05}/>
+                        <NewArrivalWithBannerSoldOutCheck
+                            key={item.title}
+                            {...item}
+                            scale={1.05}
+                            onProductClick={handleProductClick}
+                        />
                     ))
                 }
             </ProductList>
@@ -50,7 +59,7 @@ export default function Home() {
                 dataLength={OFFER_LIST.length}>
                 {
                     OFFER_LIST.map((item) => (
-                        <NewOfferWithBannerSoldOutCheck key={item.title} {...item} scale={1.05}/>
+                        <NewOfferWithBannerSoldOutCheck key={item.title} {...item} />
                     ))
                 }
             </ProductList>

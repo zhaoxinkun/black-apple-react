@@ -20,7 +20,7 @@ export default function SkuSelect({placeholder, options, onChange, value}: SkuSe
                 dark:border-apple-gray-800
                 text-apple-text-light
                 dark:text-apple-text-dark"
-                value={value || " "}
+                value={value || ""}
                 onChange={(e) => onChange(e.target.value)}
             >
                 <option value="">{placeholder}</option>

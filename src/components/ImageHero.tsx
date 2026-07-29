@@ -18,7 +18,7 @@ export default function ImageHero() {
                 <div className={"mt-4 flex space-x-4"}>
                     <IconButton
                         icon={<MdOutlineNavigateNext/>}
-                        ioconPosition="right"
+                        iconPosition="right"
                         title="进一步了解"
                         variant="primary"
                     />
