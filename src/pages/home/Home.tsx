@@ -1,6 +1,6 @@
 import { NEW_ARRIVALS_LIST, OFFER_LIST, SUGGESTED_PROUDCT } from "@/assets/data";
-import withBanner from "@/Hocs/withBanner";
-import withSoldOut from "@/Hocs/withSoldOut";
+import withBanner from "@/hoc/withBanner.tsx";
+import withSoldOut from "@/hoc/withSoldOut.tsx";
 import ImageHero from "@components/ImageHero.js";
 import Offer from "@components/Offer/Offer.js";
 import NewArrival, { type NewArrivalProps } from "@components/Product/NewArrival.js";

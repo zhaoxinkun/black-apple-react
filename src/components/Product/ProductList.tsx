@@ -1,79 +1,67 @@
 // 通用的一个组件
-import type {ReactNode} from "react";
+import type { ReactNode } from "react";
 
 const ReleaseNote = () => (
-    <div>
-        <h1>新产品发布日期：2199年1月1日</h1>
-        <h2>请耐心等待</h2>
-    </div>
-)
+  <div>
+    <h1>新产品发布日期：2199年1月1日</h1>
+    <h2>请耐心等待</h2>
+  </div>
+);
 
 const ProductNotFound = () => (
-    <div>
-        <h1>产品未发布</h1>
-        <h2>请耐心等待</h2>
-    </div>
+  <div>
+    <h1>产品未发布</h1>
+    <h2>请耐心等待</h2>
+  </div>
 );
-const ListTitle = ({title}: { title: string }) => (
-    <div style={{display: "flex", justifyContent: "center"}}>
-        <h1
-            style={{
-                fontWeight: "800",
-                fontSize: 32,
-                backgroundImage: "url('src/assets/lines.png')",
-                backgroundPosition: "center",
-            }}
-            className="dark:text-white"
-        >
-            {title || "新品上市"}
-        </h1>
-    </div>
+const ListTitle = ({ title }: { title: string }) => (
+  <div style={{ display: "flex", justifyContent: "center" }}>
+    <h1
+      style={{
+        fontWeight: "800",
+        fontSize: 32,
+        backgroundImage: "url('src/assets/lines.png')",
+        backgroundPosition: "center",
+      }}
+      className="dark:text-white"
+    >
+      {title || "新品上市"}
+    </h1>
+  </div>
 );
 
 type ProductListProps = {
-    title: string;
-    dataLength: number;
-    children: ReactNode;
+  title: string;
+  dataLength: number;
+  children: ReactNode;
 }
 
-export default function ProductList({title, dataLength, children}: ProductListProps) {
+export default function ProductList({ title, dataLength, children }: ProductListProps) {
 
-    const isReleased = new Date() <= new Date("2199-07-08")
+  const isReleased = new Date() <= new Date("2199-07-08");
 
-    // 使用if做提早return方案
-    if (!isReleased) {
-        return <ReleaseNote/>
-    }
-    if (dataLength <= 0) {
-        return <ProductNotFound/>
-    }
+  // 使用if做提早return方案
+  if (!isReleased) {
+    return <ReleaseNote/>;
+  }
+  if (dataLength <= 0) {
+    return <ProductNotFound/>;
+  }
 
-    return (
-        <>
-            <div style={{
-                display: "grid",
-                justifyItems: "center",
-                rowGap: "3rem",
-                marginTop: "4rem",
-            }}>
-                <ListTitle title={title}/>
-                {/*单个组件使用*/}
-                {/*<NewArrival product={product} OnProductOnclick={handleProductOnclick}/>*/}
-                {/*<NewArrival product={product2}/>*/}
-
-                {/*循环遍历*/}
-                {/*{*/}
-                {/*    data.map((p) => {*/}
-                {/*        return <NewArrival product={p} OnProductOnclick={handleProductOnclick} key={p.title}/>*/}
-                {/*    })*/}
-                {/*}*/}
-
-
-                {/*插槽*/}
-                {
-                    children
-                }
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div style={{
+        display: "grid",
+        justifyItems: "center",
+        rowGap: "3rem",
+        marginTop: "4rem",
+      }}>
+        <ListTitle title={title}/>
+        {/*插槽*/}
+        {
+          children
+        }
+      </div>
+    </>
+  );
 }

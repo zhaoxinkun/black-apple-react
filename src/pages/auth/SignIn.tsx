@@ -14,6 +14,7 @@ function SignIn() {
       return;
     }
     // 模拟登录逻辑
+    localStorage.setItem("token", "mocked_token"); // 模拟存储
     await navigate(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       location.state?.from || "/", // 优先跳转来源页
@@ -54,6 +55,7 @@ function SignIn() {
           </h1>
 
           {/* 登录表单 */}
+          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-2">

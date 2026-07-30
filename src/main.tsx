@@ -7,10 +7,9 @@ import "./index.css";
 const root = document.getElementById("root")!;
 enableMapSet();
 
+// DOM
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {/*<BrowserRouter>*/}
     <App/>
-    {/*</BrowserRouter>*/}
   </React.StrictMode>,
 );

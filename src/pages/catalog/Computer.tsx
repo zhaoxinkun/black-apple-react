@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-const Computers = () => {
+const Computer = () => {
   const navigate = useNavigate();
   return (
     <div>
@@ -11,4 +11,4 @@ const Computers = () => {
     </div>
   );
 };
-export default Computers;
+export default Computer;

@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router";
 
 const SearchResults = () => {
+  // 获取搜索关键字
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
   const page = parseInt(searchParams.get("page") || "1"); // 获取页码，默认为1
